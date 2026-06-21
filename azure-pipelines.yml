@@ -21,7 +21,7 @@ parameters:
   - name: environment
     displayName: 'Target Environment' 
     type: string
-    default: 'prod'
+    default: 'dev'
     values:
       - dev
       - stage
