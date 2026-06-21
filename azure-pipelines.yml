@@ -1,19 +1,44 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+###########################
+#Project=AKS Landing Zone #
+#Ownwr: Subinoy.          #
+###########################
+#braching
+#trigger
+#parameete
+#variable
+#pr
 
+# specific branch build with batching
 trigger:
-- main
+  batch: true
+  branches:
+    include:
+    - feature/review1.0.0
+    exclude:
+      - main
 
-pool:
-  vmImage: ubuntu-latest
+parameters:
+  - name: environment
+    displayName: 'Target Environment' 
+    type: string
+    default: 'dev'
+    values:
+      - dev
+      - stage
+      - prod 
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+stages:
+  - stage: PreCommit
+    jobs:
+      
+    - job: 
+      pool: dccloud
+      steps:
+      - task: TerraformInstaller@0
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+    
+
+    
+      
+
+
